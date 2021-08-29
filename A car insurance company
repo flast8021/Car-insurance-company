@@ -1,0 +1,71 @@
+import java.util.Scanner;
+
+public class insuranceCompany {
+    public static void main(String[] args) {
+        double cost = 0.0;
+        double ageFactor = 0.0;
+        double pointsFactor = 0.0;
+        final int valueFactor = 10;
+
+        Scanner kb = new Scanner(System.in);
+        driver info = new driver();
+
+        System.out.println("Please enter the value of the Car:");
+        info.setValue(kb.nextInt());
+
+        System.out.println("Please enter your Age:");
+        info.setAge(kb.nextInt());
+
+        while (true) {
+            if (info.getAge() < 18) {
+                System.out.println("Sorry you can't be insured because of your age-factor");
+                break;
+            } else if (info.getAge() >= 18 || info.getAge() <= 20) {
+                ageFactor += 2.0;
+                break;
+            } else if (info.getAge() >= 21 || info.getAge() <= 25) {
+                ageFactor += 1.5;
+                break;
+            } else if (info.getAge() > 25) {
+                ageFactor += 1.0;
+                break;
+            } else if (info.getAge() <= 0 || info.getAge() <= 100) {
+                System.out.println("Pleae enter your correct age:");
+                info.setAge(kb.nextInt());
+            }
+        }
+        System.out.println("Please enter your penality points(if any):");
+        info.setPoints(kb.nextInt());
+        while (true) {
+            if (info.getPoints() >= 9) {
+                System.out.println("Sorry you can't be insured because of your points-factor");
+                break;
+            } else if (info.getPoints() == 8) {
+                pointsFactor += 1.7;
+                break;
+            } else if (info.getPoints() == 7) {
+                pointsFactor += 1.4;
+                break;
+            } else if (info.getPoints() == 6) {
+                pointsFactor += 1.2;
+                break;
+            } else if (info.getPoints() == 5) {
+                pointsFactor += 1.1;
+                break;
+            } else if (info.getPoints() < 5) {
+                pointsFactor += 1.0;
+                break;
+            } else {
+                System.out.println("Pleae enter your correct penality points:");
+                info.setAge(kb.nextInt());
+            }
+        }
+        cost += (250 + (info.getValue() / 1000) * valueFactor) * ageFactor * pointsFactor;
+        if (cost == 0) {
+            System.out.println("Sorry You Can't be insured");
+        } else {
+            System.out.println("Driver of age: " + info.getAge() + " with penality points\"" + info.getPoints()
+                    + "\" your cost of insurance will be: " + cost);
+        }
+    }
+}
