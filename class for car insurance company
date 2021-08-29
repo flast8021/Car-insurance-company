@@ -1,0 +1,32 @@
+public class driver {
+
+    // attributes for insurance company's programe.
+    private int value;
+    private int age;
+    private int points;
+
+    // getters and setters for this programe.
+    public void setValue(int value) {
+        this.value = value;
+    }
+
+    public int getValue() {
+        return this.value;
+    }
+
+    public void setPoints(int points) {
+        this.points = points;
+    }
+
+    public int getPoints() {
+        return this.points;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public int getAge() {
+        return this.age;
+    }
+}
